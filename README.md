@@ -6,7 +6,7 @@ This is a simple Name dictionary that can search Japanese or English words. For 
 
 The Name dictionary being used is found here: [ENAMDICT/JMnedict](http://www.edrdg.org/enamdict/enamdict_doc.html)
 
-Access to the live dictionary project can be found here: [Michisensei Name Dictionary](https://michisense.com)
+Access to the live dictionary project can be found here: [Michisensei Name Dictionary](https://michisensei.com)
 
 #
 
