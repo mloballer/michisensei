@@ -1,15 +1,6 @@
-<style>
-.title {
-      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-      font-size: 56px;
-      text-transform: uppercase;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    }
-</style>
 
-<p align="center"><a href="https://michisensei.com" target="_blank"><h1 class="title">Michisensei Name Dictionary</h1></a></p>
 
-## About Michisensei Name Dictionary
+# Michisensei Name Dictionary
 
 This is a simple Name dictionary that can search Japanese or English words. For example if you would like to know how to write your english name in Japanese, you can search "Smith". It will return all the people that have the name Smith that are registered in the dictionary.
 
