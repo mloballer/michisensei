@@ -64,32 +64,29 @@ class DictionaryController extends Controller
 
         switch ($option) {
             case "contain":
-                $results = $dictionary->where('word', 'like', "%$word%")
-                                      ->orWhere('reading', 'like', "%$word%")
-                                      ->orWhere('meaning', 'like', "%$word%")
-                                      ->limit(9999)
-                                      ->get();
+                $results = $dictionary->where(function ($query) use ($word) {
+                    $query->where(DB::raw("BINARY word"), 'like', "%$word%")
+                        ->orWhere(DB::raw("BINARY reading"), 'like', "%$word%")
+                        ->orWhere(DB::raw("BINARY meaning"), 'like', "%$word%");
+                })->limit(9999)->get();
                 break;
             case "start":
-                $results = $dictionary->where('word', 'like', "$word%")
-                                      ->orWhere('reading', 'like', "$word%")
-                                      ->orWhere('meaning', 'like', "%$word%")
-                                      ->limit(9999)
-                                      ->get();
+                $results = $dictionary->where(function ($query) use ($word) {
+                    $query->where(DB::raw("BINARY word"), 'like', "$word%")
+                        ->orWhere(DB::raw("BINARY reading"), 'like', "$word%");
+                })->limit(9999)->get();
                 break;
             case "end":
-                $results = $dictionary->where('word', 'like', "%$word")
-                                      ->orWhere('reading', 'like', "%$word")
-                                      ->orWhere('meaning', 'like', "%$word%")
-                                      ->limit(9999)
-                                      ->get();
+                $results = $dictionary->where(function ($query) use ($word) {
+                    $query->where(DB::raw("BINARY word"), 'like', "%$word")
+                        ->orWhere(DB::raw("BINARY reading"), 'like', "%$word%");
+                })->limit(9999)->get();
                 break;
             case "are":
-                $results = $dictionary->where('word', '=', $word)
-                                      ->orWhere('reading', '=', $word)
-                                      ->orWhere('meaning', 'like', "%$word%")
-                                      ->limit(9999)
-                                      ->get();
+                $results = $dictionary->where(function ($query) use ($word) {
+                    $query->where(DB::raw("BINARY word"), '=', $word)
+                        ->orWhere(DB::raw("BINARY reading"), '=', $word);
+                })->limit(9999)->get();
                 break;
             default:
                 $results = $dictionary->limit(9999)->get();

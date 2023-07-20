@@ -112,6 +112,58 @@
       text-align: center;
     }
 
+  #floating-legend {
+    position: fixed;
+    bottom: 60px;
+    right: 20px;
+    z-index: 9999;
+  }
+
+  #legend-button {
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 18px;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #legend-box {
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+    right: 0px;
+    bottom: 80px;
+    width: 365px;
+    border: 2px solid red;
+
+    /* Updated styles for mobile */
+      @media (max-width: 767px) {
+        right: 20px;
+        bottom: 63px;
+        width: 300px;
+        font-size: 11px;
+      }
+  }
+
+  #legend-box p {
+    margin: 0;
+  }
+
+  span {
+    font-family: monospace;
+    margin: 0.1em 0px;
+  }
+
   </style>
 </head>
 <body>
@@ -133,12 +185,41 @@
         &nbsp; <button id="search-button" onclick="searchWord()">Search</button>
       </div>
 
-      <p style="color: blue;" id="results-count"></p>
+      <p style="color: red;" id="results-count"></p>
       <div id="results"></div>
     </div>
 
+  <div id="floating-legend">
+    <button id="legend-button" onclick="toggleLegend()">Key</button>
+    <div id="legend-box">
+
+      <span>
+        s - surname<br>
+        p - place-name<br>
+        u - person name, either given or surname,<br> 
+            &nbsp;&nbsp;&nbsp;&nbsp;as-yet unclassified<br>
+        g - given name, as-yet not classified by sex<br>
+        f - female given name<br>
+        m - male given name<br>
+        h - full name of a particular person<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;(usually family plus given)<br>
+        pr - product name<br>
+        c - company name<br>
+        o - organization name<br>
+        st - stations<br>
+        wk - work of literature, art, film, etc.<br>
+      </span>
+
+    </div>
   </div>
+
+  </div>
+
+  
+
+
 </div>
+
 
 <div class="footer">
   &copy; <?php echo date('Y') ;?> Michisensei Name Dictionary. All rights reserved.
@@ -199,6 +280,16 @@
         }
       });
     }
+
+    function toggleLegend() {
+      var legendBox = document.getElementById("legend-box");
+      if (legendBox.style.display === "block") {
+        legendBox.style.display = "none";
+      } else {
+        legendBox.style.display = "block";
+      }
+    }
+
   </script>
 </body>
 </html>
