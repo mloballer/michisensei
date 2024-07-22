@@ -80,7 +80,7 @@ class DictionaryController extends Controller
             case "end":
                 $results = $dictionary->where(function ($query) use ($word) {
                     $query->where(DB::raw("BINARY word"), 'like', "%$word")
-                        ->orWhere(DB::raw("BINARY reading"), 'like', "%$word%")
+                        ->orWhere(DB::raw("BINARY reading"), 'like', "%$word")
                         ->orWhere(DB::raw(" meaning"), 'like', "%$word%");
                 })->limit(9999)->get();
                 break;

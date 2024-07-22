@@ -262,6 +262,7 @@
             var resultHtml = '';
             $.each(response, function(index, entry) {
               if(entry.reading) reading =  ' [' +  entry.reading + ']';
+              else reading = '';
               resultHtml += '<div><strong>' + entry.word + '</strong>' + reading + '  ' + entry.meaning + '</div>' + '<hr>';
             });
             resultsContainer.html(resultHtml);
