@@ -10,3 +10,7 @@ Route::get('/dictionary/lookup', [DictionaryController::class, 'lookupWord'])->n
 Route::get('/options', function () {
     return view('options'); 
 });
+
+Route::get('/average', function () {
+    return view('average'); 
+});

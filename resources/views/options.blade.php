@@ -83,17 +83,22 @@
                 // Table for stop loss and take profit (up to 20 entries)
                 let tableHtml1 = '<table class="percentage-table"><tr><th>Take Profit</th><th>Value</th><th>Stop Loss</th><th>Value</th></tr>';
 
-                for (let i = 0; i < 20; i++) {
-                    const positivePercent = 5 * (i + 1);
-                    const negativePercent = -5 * (i + 1);
+                for (let i = 0; i < 30; i++) {
+                     positivePercent = 5 * (i + 1);
+                     negativePercent = -5 * (i + 1);
 
-                    const positiveValue = (value * (1 + (positivePercent / 100))).toFixed(2);
-                    const negativeValue = (value * (1 + (negativePercent / 100))).toFixed(2);
+                     negativePercentText = negativePercent + "%"
+
+                     positiveValue = (value * (1 + (positivePercent / 100))).toFixed(2);
+                     negativeValue = (value * (1 + (negativePercent / 100))).toFixed(2);
+
+                    if(negativePercent < -100) negativePercentText = '-';
+                    if(negativeValue < 0)     negativeValue = '-';
 
                     tableHtml1 += `<tr>
                                     <td>+${positivePercent}%</td>
                                     <td>${positiveValue}</td>
-                                    <td>${negativePercent}%</td>
+                                    <td>${negativePercentText}</td>
                                     <td>${negativeValue}</td>
                                   </tr>`;
                 }
